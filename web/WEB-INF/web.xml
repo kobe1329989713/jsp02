@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>jsp02</display-name>
+
+
+
+
+    <!--&lt;!&ndash; SendMsgServlet config start &ndash;&gt;-->
+    <!--&lt;!&ndash; 1. 声明一个Servlet &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--&lt;!&ndash; servlet-name servlet的名字，在整个项目中要保持唯一 &ndash;&gt;-->
+        <!--<servlet-name>sendMsgServlet</servlet-name>-->
+        <!--&lt;!&ndash; servlet-class 完整的限定名(包名+类名） &ndash;&gt;-->
+        <!--<servlet-class>com.tzedu.servlet.SendMsgServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--&lt;!&ndash;2.servlet的映射，配置servlet的访问路径  &ndash;&gt;-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>sendMsgServlet</servlet-name>-->
+        <!--&lt;!&ndash; servlet的访问路径 &ndash;&gt;-->
+        <!--<url-pattern>/room/send</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--&lt;!&ndash; SendMsgServlet config end &ndash;&gt;-->
+
+
+
+
+    <!--配置一个servlet 就是一个服务，就相当于是一个 controller 里面的一个方法样。-->
+    <servlet>
+        <servlet-name>sendMsgServlet</servlet-name>
+        <servlet-class>com.utsoft.jsp.SendMsgServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sendMsgServlet</servlet-name>
+        <url-pattern>/room/send</url-pattern>
+    </servlet-mapping>
+    <!--end-->
+    <!--
+        一个请求从 /room/send/ 来。映射到 sendMsgServlet
+        它又找到 sendMsgServlet 在找到具体的 java类就可以开始执行这个请求了
+        访问URL：http://localhost:8080/room/send  就可以执行业务了。
+    -->
+
+
+    <!--欢迎页面。-->
+    <welcome-file-list>
+        <welcome-file>inde x.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
