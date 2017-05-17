@@ -3,6 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <!--访问一个servlet 它会优先进入到这里面们来。 -->
+
+
 
     <display-name>jsp02</display-name>
 
@@ -32,6 +35,13 @@
     <servlet>
         <servlet-name>sendMsgServlet</servlet-name>
         <servlet-class>com.utsoft.jsp.SendMsgServlet</servlet-class>
+        <!-- tomcat一加载，就执行这个 servlet ，数字越小越靠前 -->
+        <load-on-startup>0</load-on-startup>
+        <!--初始化参数，一些过滤。-->
+        <init-param>
+            <param-name>keyword</param-name>
+            <param-value>fuck,shit,cao</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>sendMsgServlet</servlet-name>
@@ -43,6 +53,23 @@
         它又找到 sendMsgServlet 在找到具体的 java类就可以开始执行这个请求了
         访问URL：http://localhost:8080/room/send  就可以执行业务了。
     -->
+
+
+    <!-- Filter 配置 -->
+    <filter>
+        <description>越权访问控制过滤器</description>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>com.utsoft.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <!--找到这个 filter 过滤器-->
+        <filter-name>UserFilter</filter-name>
+        <!-- 拦截哪个目录下面的资源文件。 -->
+        <url-pattern>/room/*</url-pattern>
+    </filter-mapping>
+
+
+
 
 
     <!--欢迎页面。-->
